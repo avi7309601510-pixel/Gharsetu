@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GharSetu | घर और इंटीरियर का भरोसेमंद साथी</title>
+<style>
+:root {
+  --site-primary: #145A4A;
+  --site-secondary: #F2B544;
+  --site-background: #F7F5EF;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #1D2B26;
+  --site-on-background: #202923;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: light-dark(var(--site-background), #17211D); color: light-dark(var(--site-on-background), #F1F5F0); }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+.wrap { max-width: 1120px; margin: auto; padding: 0 calc(22px * var(--site-spacing-scale)); }
+.topbar { background: var(--site-primary); color: var(--site-on-primary); }
+.nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.brand { display:flex; align-items:center; gap:10px; font-weight: 850; letter-spacing:-.6px; font-size: 1.35rem; }
+.brandmark { width:40px; height:40px; border-radius: 13px; background: var(--site-secondary); color: var(--site-on-secondary); display:grid; place-items:center; font-size:1.35rem; }
+.brand small { display:block; font-size:.66rem; letter-spacing:.2px; font-weight:500; opacity:.85; margin-top:1px; }
+.navlinks { display:flex; gap:18px; align-items:center; font-size:.92rem; }
+.navlinks a { text-decoration:none; opacity:.9; }
+.lang { border:1px solid #ffffff70; border-radius:999px; background:transparent; color:white; padding:8px 12px; }
+.hero { background: var(--site-primary); color:var(--site-on-primary); overflow:hidden; position:relative; }
+.hero-grid { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:40px; padding-top:64px; padding-bottom:70px; }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; border:1px solid #ffffff45; border-radius:999px; padding:7px 12px; font-size:.8rem; color:#fff4d4; }
+h1,h2,h3 { font-family:var(--site-font-heading); letter-spacing:-.04em; }
+h1 { font-size:calc(clamp(2.3rem, 5vw, 4.4rem) * var(--site-heading-scale)); line-height:1.04; margin:20px 0; max-width:680px; }
+.hero p { font-size:1.08rem; line-height:1.75; color:#e2eee8; max-width:580px; }
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:25px; }
+.btn { border:0; border-radius:calc(13px * var(--site-radius-scale)); padding:13px 18px; font-weight:750; text-decoration:none; display:inline-flex; justify-content:center; align-items:center; gap:8px; }
+.btn-primary { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn-light { background:#ffffff15; color:white; border:1px solid #ffffff5b; }
+.hero-art { position:relative; min-height:330px; display:grid; place-items:center; }
+.house-card { width:min(100%,390px); background:#fffaf0; color:#1c352c; border-radius:26px; padding:24px; transform:rotate(2deg); box-shadow:0 24px 70px #071e1840; }
+.house-illustration { height:160px; background:linear-gradient(140deg,#e4eee3,#f4d9a1); border-radius:18px; display:grid; place-items:center; font-size:6rem; position:relative; overflow:hidden; }
+.house-illustration:after { content:""; position:absolute; width:190px;height:190px;border:1px solid #145a4a25;border-radius:50%; right:-45px;top:-80px; }
+.card-row { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:17px; }
+.pill { background:#e1eee6; color:#145a4a; border-radius:999px; padding:7px 10px; font-size:.75rem; font-weight:700; }
+.trust { display:flex; flex-wrap:wrap; gap:18px; margin-top:25px; font-size:.83rem; color:#d4e4dc; }
+section { padding:68px 0; }
+.section-head { max-width:650px; margin-bottom:30px; }
+.kicker { text-transform:uppercase; letter-spacing:.12em; font-weight:800; font-size:.75rem; color:var(--site-primary); }
+h2 { font-size:calc(clamp(1.8rem, 3vw, 2.8rem) * var(--site-heading-scale)); line-height:1.12; margin:10px 0 12px; }
+.sub { color:light-dark(#66716a,#b8c5bc); line-height:1.7; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.service { background:light-dark(#fff,#202c26); border:1px solid light-dark(#e6e7df,#36443b); border-radius:calc(19px * var(--site-radius-scale)); padding:23px; }
+.service .emoji { font-size:2rem; background:light-dark(#f4f0e5,#2a3930); width:56px;height:56px;border-radius:16px;display:grid;place-items:center; }
+.service h3 { margin:17px 0 8px; font-size:1.2rem; }
+.service p { margin:0; line-height:1.65; color:light-dark(#66716a,#b8c5bc); font-size:.93rem; }
+.two { display:grid; grid-template-columns:.9fr 1.1fr; gap:30px; align-items:start; }
+.panel { background:light-dark(#fff,#202c26); border:1px solid light-dark(#e6e7df,#36443b); border-radius:calc(22px * var(--site-radius-scale)); padding:26px; }
+.tabs { display:flex; gap:7px; padding:5px; background:light-dark(#f1f1e9,#17211d); border-radius:14px; margin-bottom:20px; }
+.tab { flex:1; border:0; padding:11px 8px; border-radius:10px; background:transparent; color:inherit; font-weight:750; }
+.tab.active { background:var(--site-primary); color:white; }
+form { display:grid; gap:14px; }
+label { display:grid; gap:7px; font-weight:700; font-size:.88rem; }
+input,select,textarea { width:100%; border:1px solid light-dark(#d9ded6,#435148); border-radius:11px; padding:12px 13px; background:light-dark(#fff,#17211d); color:inherit; outline:none; }
+input:focus,select:focus,textarea:focus { border-color:var(--site-primary); box-shadow:0 0 0 3px #145a4a20; }
+textarea { min-height:95px; resize:vertical; }
+.formgrid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.full { grid-column:1/-1; }
+.note { font-size:.8rem; color:light-dark(#66716a,#b8c5bc); line-height:1.5; }
+.result { display:none; border:1px solid #b8d6c4; background:light-dark(#edf8f0,#20392b); padding:13px; border-radius:12px; margin-top:13px; line-height:1.55; }
+.steps { display:grid; gap:17px; }
+.step { display:flex; gap:14px; }
+.num { flex:0 0 36px; width:36px;height:36px; border-radius:12px; display:grid;place-items:center; background:var(--site-secondary); color:var(--site-on-secondary); font-weight:850; }
+.step h3 { margin:2px 0 5px; font-size:1.03rem; }
+.step p { margin:0; color:light-dark(#66716a,#b8c5bc); line-height:1.6; font-size:.9rem; }
+.cta { background:var(--site-secondary); color:var(--site-on-secondary); border-radius:calc(22px * var(--site-radius-scale)); padding:32px; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+.cta h2 { max-width:620px; }
+.cta p { line-height:1.6; max-width:620px; }
+.darkbtn { background:var(--site-primary); color:white; white-space:nowrap; }
+footer { background:light-dark(#112f27,#0c1712); color:#e8f0eb; padding:32px 0; }
+.foot { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:center; }
+footer p { color:#b6c9bf; font-size:.86rem; line-height:1.6; }
+.wa { position:fixed; right:18px; bottom:18px; z-index:5; border-radius:999px; background:#1eaa61; color:#fff; text-decoration:none; font-weight:800; padding:13px 17px; box-shadow:0 8px 30px #0003; }
+.toast { display:none; position:fixed; left:50%; bottom:24px; transform:translateX(-50%); z-index:8; background:#152c23;color:#fff;padding:13px 18px;border-radius:12px;max-width:90%;box-shadow:0 8px 28px #0004; }
+@media(max-width:760px) {
+ .nav { min-height:66px; } .navlinks a { display:none; } .hero-grid { grid-template-columns:1fr; padding-top:43px; padding-bottom:45px; gap:12px; }
+ .hero-art { min-height:270px; } .house-card { max-width:330px; padding:17px; } .house-illustration {height:130px;font-size:5rem;}
+ section { padding:48px 0; } .grid3 {grid-template-columns:1fr;} .two {grid-template-columns:1fr;} .formgrid {grid-template-columns:1fr;} .full {grid-column:auto;} .panel {padding:18px;} .cta {align-items:flex-start; flex-direction:column; padding:25px;} .wrap {padding-left:18px;padding-right:18px;}
+}
+</style>
+</head>
+<body>
+<div id="app" data-sites-preview-theme="custom">
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#home" style="text-decoration:none;color:inherit">
+        <span class="brandmark">⌂</span><span>GharSetu<small data-hi="घर और इंटीरियर का भरोसेमंद साथी" data-en="Your home & interiors connection">घर और इंटीरियर का भरोसेमंद साथी</small></span>
+      </a>
+      <nav class="navlinks">
+        <a href="#services" data-hi="सेवाएँ" data-en="Services">सेवाएँ</a>
+        <a href="#request" data-hi="कोटेशन लें" data-en="Get a quote">कोटेशन लें</a>
+        <a href="#partner" data-hi="सप्लायर बनें" data-en="Join as supplier">सप्लायर बनें</a>
+        <button class="lang" id="langBtn" type="button">EN</button>
+      </nav>
+    </div>
+  </header>
+  <main id="home">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow" data-hi="✦ घर बनाने का नया तरीका" data-en="✦ A simpler way to build your home">✦ घर बनाने का नया तरीका</span>
+          <h1 data-hi="आपके घर के लिए सही लोग, सही सामान।" data-en="The right people and products for your home.">आपके घर के लिए सही लोग, सही सामान।</h1>
+          <p data-hi="इंटीरियर, फर्नीचर और घर के काम के लिए अपनी जरूरत बताइए। GharSetu आपको संबंधित सप्लायर और प्रोफेशनल से जोड़ने का प्रयास करता है।" data-en="Tell us what your home needs. GharSetu helps connect you with relevant suppliers and professionals for interiors, furniture and home projects.">इंटीरियर, फर्नीचर और घर के काम के लिए अपनी जरूरत बताइए। GharSetu आपको संबंधित सप्लायर और प्रोफेशनल से जोड़ने का प्रयास करता है।</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#request" data-hi="मुफ्त कोटेशन माँगें →" data-en="Request a quote →">मुफ्त कोटेशन माँगें →</a>
+            <a class="btn btn-light" href="#partner" data-hi="पार्टनर बनें" data-en="Become a partner">पार्टनर बनें</a>
+          </div>
+          <div class="trust"><span>✓ <span data-hi="एक जगह पर विकल्प" data-en="Options in one place">एक जगह पर विकल्प</span></span><span>✓ <span data-hi="सीधी पूछताछ" data-en="Direct enquiries">सीधी पूछताछ</span></span><span>✓ <span data-hi="स्थानीय पार्टनर नेटवर्क" data-en="Local partner network">स्थानीय पार्टनर नेटवर्क</span></span></div>
+        </div>
+        <div class="hero-art" aria-label="Home design illustration">
+          <div class="house-card">
+            <div class="house-illustration">🏡</div>
+            <div class="card-row"><div><strong data-hi="आपका घर, आपकी पसंद" data-en="Your home, your style">आपका घर, आपकी पसंद</strong><div style="font-size:.82rem;color:#68766d;margin-top:4px" data-hi="इंटीरियर • फर्नीचर • मरम्मत" data-en="Interiors • Furniture • Repairs">इंटीरियर • फर्नीचर • मरम्मत</div></div><span class="pill">GharSetu</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker" data-hi="हमारी कैटेगरी" data-en="Explore categories">हमारी कैटेगरी</div><h2 data-hi="घर के हर प्रोजेक्ट के लिए शुरुआत यहीं से" data-en="Start here for your next home project">घर के हर प्रोजेक्ट के लिए शुरुआत यहीं से</h2><p class="sub" data-hi="अपनी जरूरत चुनें और हमें बताएं—हम संबंधित प्रोफेशनल या सप्लायर खोजने में मदद करेंगे।" data-en="Choose what you need and tell us a little about your project. We’ll help find relevant professionals or suppliers.">अपनी जरूरत चुनें और हमें बताएं—हम संबंधित प्रोफेशनल या सप्लायर खोजने में मदद करेंगे।</p></div>
+        <div class="grid3">
+          <article class="service"><div class="emoji">🛋️</div><h3 data-hi="इंटीरियर और फर्नीचर" data-en="Interiors & furniture">इंटीरियर और फर्नीचर</h3><p data-hi="मॉड्यूलर किचन, वार्डरोब, सोफा, बेड और घर की सजावट।" data-en="Modular kitchens, wardrobes, sofas, beds and home styling.">मॉड्यूलर किचन, वार्डरोब, सोफा, बेड और घर की सजावट।</p></article>
+          <article class="service"><div class="emoji">🧱</div><h3 data-hi="बिल्डिंग मटेरियल" data-en="Building materials">बिल्डिंग मटेरियल</h3><p data-hi="टाइल्स, प्लाईवुड, सैनिटरी, पेंट और लाइटिंग के लिए पूछताछ।" data-en="Enquire about tiles, plywood, sanitaryware, paint and lighting.">टाइल्स, प्लाईवुड, सैनिटरी, पेंट और लाइटिंग के लिए पूछताछ।</p></article>
+          <article class="service"><div class="emoji">🛠️</div><h3 data-hi="कारीगर और मरम्मत" data-en="Professionals & repairs">कारीगर और मरम्मत</h3><p data-hi="कारपेंटर, पेंटर, इलेक्ट्रिशियन और अन्य घरेलू काम।" data-en="Carpenters, painters, electricians and other home services.">कारपेंटर, पेंटर, इलेक्ट्रिशियन और अन्य घरेलू काम।</p></article>
+        </div>
+      </div>
+    </section>
+    <section id="request" style="background:light-dark(#efeee6,#17211d)">
+      <div class="wrap two">
+        <div>
+          <div class="kicker" data-hi="ग्राहक के लिए" data-en="For customers">ग्राहक के लिए</div>
+          <h2 data-hi="अपनी जरूरत भेजें। कोटेशन पाने की शुरुआत करें।" data-en="Share your requirement. Start getting quotes.">अपनी जरूरत भेजें। कोटेशन पाने की शुरुआत करें।</h2>
+          <p class="sub" data-hi="फॉर्म भरने पर आपके मैसेज का ड्राफ्ट WhatsApp में खुलेगा। अभी यह प्रोटोटाइप है—आपकी जानकारी किसी डेटाबेस में अपने-आप सेव नहीं होती।" data-en="Submitting opens a prepared WhatsApp message. This is a prototype; your details are not automatically saved to a database.">फॉर्म भरने पर आपके मैसेज का ड्राफ्ट WhatsApp में खुलेगा। अभी यह प्रोटोटाइप है—आपकी जानकारी किसी डेटाबेस में अपने-आप सेव नहीं होती।</p>
+          <div class="steps" style="margin-top:28px">
+            <div class="step"><span class="num">1</span><div><h3 data-hi="अपनी जरूरत बताएं" data-en="Describe your project">अपनी जरूरत बताएं</h3><p data-hi="काम, बजट और शहर की जानकारी दें।" data-en="Share the project type, budget and city.">काम, बजट और शहर की जानकारी दें।</p></div></div>
+            <div class="step"><span class="num">2</span><div><h3 data-hi="सप्लायर से मिलान" data-en="Find a relevant supplier">सप्लायर से मिलान</h3><p data-hi="उपलब्ध पार्टनरों से संपर्क की प्रक्रिया शुरू करें।" data-en="Start the process of matching with available partners.">उपलब्ध पार्टनरों से संपर्क की प्रक्रिया शुरू करें।</p></div></div>
+            <div class="step"><span class="num">3</span><div><h3 data-hi="कोटेशन की तुलना" data-en="Compare quotes">कोटेशन की तुलना</h3><p data-hi="काम, कीमत और शर्तें सीधे जाँचें।" data-en="Review price, scope and terms before deciding.">काम, कीमत और शर्तें सीधे जाँचें।</p></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="tabs"><button class="tab active" type="button" id="customerTab" data-hi="ग्राहक" data-en="Customer">ग्राहक</button><button class="tab" type="button" id="supplierTab" data-hi="सप्लायर" data-en="Supplier">सप्लायर</button></div>
+          <form id="customerForm">
+            <div class="formgrid">
+              <label><span data-hi="आपका नाम *" data-en="Your name *">आपका नाम *</span><input name="name" required placeholder="नाम / Name"></label>
+              <label><span data-hi="मोबाइल नंबर *" data-en="Mobile number *">मोबाइल नंबर *</span><input name="phone" required inputmode="tel" pattern="[0-9+() -]{10,}" placeholder="10 अंकों का नंबर"></label>
+              <label><span data-hi="शहर *" data-en="City *">शहर *</span><input name="city" required value="Prayagraj / प्रयागराज"></label>
+              <label><span data-hi="काम किसका है? *" data-en="What do you need? *">काम किसका है? *</span><select name="category" required><option value="">चुनें / Select</option><option>Interior / इंटीरियर</option><option>Furniture / फर्नीचर</option><option>Building material / बिल्डिंग मटेरियल</option><option>Repair / मरम्मत</option><option>Other / अन्य</option></select></label>
+              <label><span data-hi="अनुमानित बजट" data-en="Estimated budget">अनुमानित बजट</span><select name="budget"><option>Not decided / तय नहीं</option><option>Under ₹10,000</option><option>₹10,000–₹50,000</option><option>₹50,000–₹2 lakh</option><option>₹2 lakh+</option></select></label>
+              <label><span data-hi="कब तक चाहिए?" data-en="When do you need it?">कब तक चाहिए?</span><select name="timeline"><option>As soon as possible / जल्द</option><option>Within 2 weeks / 2 हफ्ते में</option><option>Within a month / एक महीने में</option><option>Just exploring / जानकारी चाहिए</option></select></label>
+              <label class="full"><span data-hi="काम की जानकारी" data-en="Project details">काम की जानकारी</span><textarea name="details" placeholder="जैसे: 2BHK किचन, वार्डरोब, टाइल्स आदि"></textarea></label>
+            </div>
+            <button class="btn btn-primary" type="submit" data-hi="WhatsApp पर कोटेशन भेजें →" data-en="Send quote request on WhatsApp →">WhatsApp पर कोटेशन भेजें →</button>
+            <p class="note" data-hi="* जरूरी जानकारी। अभी वास्तविक सप्लायर मिलान और ऑर्डर ट्रैकिंग मैन्युअल होगी।" data-en="* Required. Supplier matching and order tracking are manual in this prototype.">* जरूरी जानकारी। अभी वास्तविक सप्लायर मिलान और ऑर्डर ट्रैकिंग मैन्युअल होगी।</p>
+          </form>
+          <form id="supplierForm" style="display:none">
+            <div class="formgrid">
+              <label><span data-hi="व्यक्ति/बिजनेस का नाम *" data-en="Person/business name *">व्यक्ति/बिजनेस का नाम *</span><input name="business" required placeholder="Business name"></label>
+              <label><span data-hi="मोबाइल नंबर *" data-en="Mobile number *">मोबाइल नंबर *</span><input name="phone" required inputmode="tel" pattern="[0-9+() -]{10,}" placeholder="Mobile number"></label>
+              <label><span data-hi="शहर/सेवा क्षेत्र *" data-en="City/service area *">शहर/सेवा क्षेत्र *</span><input name="city" required placeholder="Prayagraj"></label>
+              <label><span data-hi="आपकी कैटेगरी *" data-en="Your category *">आपकी कैटेगरी *</span><select name="category" required><option value="">चुनें / Select</option><option>Interior designer</option><option>Furniture maker</option><option>Material supplier</option><option>Carpenter / Painter</option><option>Electrician / Plumber</option><option>Other</option></select></label>
+              <label class="full"><span data-hi="अनुभव और काम की जानकारी" data-en="Experience and work details">अनुभव और काम की जानकारी</span><textarea name="details" placeholder="आप क्या काम करते हैं?"></textarea></label>
+            </div>
+            <button class="btn btn-primary" type="submit" data-hi="पार्टनर बनने के लिए WhatsApp करें →" data-en="Apply as a partner on WhatsApp →">पार्टनर बनने के लिए WhatsApp करें →</button>
+            <p class="note" data-hi="रजिस्ट्रेशन से पहले जानकारी की जाँच की जाएगी। अभी कोई पेड लिस्टिंग नहीं है।" data-en="Details should be verified before listing. No paid listing is enabled yet.">रजिस्ट्रेशन से पहले जानकारी की जाँच की जाएगी। अभी कोई पेड लिस्टिंग नहीं है।</p>
+          </form>
+          <div class="result" id="formResult" role="status"></div>
+        </div>
+      </div>
+    </section>
+    <section id="partner">
+      <div class="wrap">
+        <div class="cta">
+          <div><div class="kicker" data-hi="पार्टनर नेटवर्क" data-en="Partner network">पार्टनर नेटवर्क</div><h2 data-hi="क्या आप सप्लायर या कारीगर हैं?" data-en="Are you a supplier or skilled professional?">क्या आप सप्लायर या कारीगर हैं?</h2><p data-hi="GharSetu के शुरुआती पार्टनर नेटवर्क में शामिल होने के लिए अपनी जानकारी भेजें। पहले चरण में प्रयागराज पर फोकस है।" data-en="Share your details to join GharSetu’s early partner network. The first launch focuses on Prayagraj.">GharSetu के शुरुआती पार्टनर नेटवर्क में शामिल होने के लिए अपनी जानकारी भेजें। पहले चरण में प्रयागराज पर फोकस है।</p></div>
+          <button class="btn darkbtn" type="button" id="joinBtn" data-hi="पार्टनर फॉर्म भरें →" data-en="Open partner form →">पार्टनर फॉर्म भरें →</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap foot">
+      <div><div class="brand"><span class="brandmark">⌂</span><span>GharSetu<small data-hi="घर के सपनों को जोड़ता है" data-en="Connecting home dreams">घर के सपनों को जोड़ता है</small></span></div><p data-hi="शुरुआती वेबसाइट प्रोटोटाइप • प्रयागराज" data-en="Early website prototype • Prayagraj">शुरुआती वेबसाइट प्रोटोटाइप • प्रयागराज</p></div>
+      <div><strong data-hi="संपर्क" data-en="Contact">संपर्क</strong><p data-hi="WhatsApp से पूछताछ करें।<br>लाइव होने से पहले अपना आधिकारिक नंबर जोड़ें।" data-en="Contact us on WhatsApp.<br>Add your official number before launch.">WhatsApp से पूछताछ करें।<br>लाइव होने से पहले अपना आधिकारिक नंबर जोड़ें।</p></div>
+    </div>
+  </footer>
+  <a class="wa" id="waLink" href="#request" aria-label="WhatsApp contact">☏ WhatsApp</a>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+<script>
+(function(){
+  // Replace this placeholder with the company's official WhatsApp number before launch.
+  const WHATSAPP_NUMBER = "916390880141";
+  let language = "hi";
+  const langBtn = document.getElementById("langBtn");
+  function setLanguage(next) {
+    language = next;
+    document.documentElement.lang = language === "hi" ? "hi" : "en";
+    document.querySelectorAll("[data-hi][data-en]").forEach(el => {
+      const value = el.getAttribute("data-" + language);
+      if (value) el.innerHTML = value;
+    });
+    langBtn.textContent = language === "hi" ? "EN" : "हिंदी";
+    document.querySelectorAll("input[placeholder],textarea[placeholder]").forEach(el => {
+      if (!el.dataset.originalPlaceholder) el.dataset.originalPlaceholder = el.placeholder;
+      if (language === "en") {
+        const map = {"नाम / Name":"Name","10 अंकों का नंबर":"10-digit number","जैसे: 2BHK किचन, वार्डरोब, टाइल्स आदि":"e.g. 2BHK kitchen, wardrobe, tiles","Business name":"Business name","Mobile number":"Mobile number","Prayagraj":"Prayagraj"};
+        el.placeholder = map[el.dataset.originalPlaceholder] || el.dataset.originalPlaceholder;
+      } else el.placeholder = el.dataset.originalPlaceholder;
+    });
+  }
+  langBtn.addEventListener("click", () => setLanguage(language === "hi" ? "en" : "hi"));
+  const customerForm = document.getElementById("customerForm");
+  const supplierForm = document.getElementById("supplierForm");
+  const customerTab = document.getElementById("customerTab");
+  const supplierTab = document.getElementById("supplierTab");
+  function switchTab(which) {
+    const customer = which === "customer";
+    customerForm.style.display = customer ? "grid" : "none";
+    supplierForm.style.display = customer ? "none" : "grid";
+    customerTab.classList.toggle("active", customer);
+    supplierTab.classList.toggle("active", !customer);
+    document.getElementById("formResult").style.display = "none";
+  }
+  customerTab.addEventListener("click", () => switchTab("customer"));
+  supplierTab.addEventListener("click", () => switchTab("supplier"));
+  document.getElementById("joinBtn").addEventListener("click", () => {
+    switchTab("supplier");
+    document.getElementById("request").scrollIntoView({behavior:"smooth"});
+  });
+  function openWhatsApp(message) {
+    if (!/^91\d{10}$/.test(WHATSAPP_NUMBER)) {
+      const result = document.getElementById("formResult");
+      result.style.display = "block";
+      result.textContent = language === "hi"
+        ? "डेमो तैयार है। लाइव WhatsApp भेजने के लिए वेबसाइट के कोड में WHATSAPP_NUMBER को अपने आधिकारिक 10 अंकों के नंबर से बदलें (91 सहित)। नीचे दिए गए संदेश को कॉपी करके WhatsApp में भेज सकते हैं।"
+        : "Demo is ready. To enable live WhatsApp, replace WHATSAPP_NUMBER in the code with your official 10-digit number including 91. You can copy the prepared message and send it in WhatsApp.";
+      const copy = document.createElement("button");
+      copy.className = "btn btn-primary";
+      copy.type = "button";
+      copy.textContent = language === "hi" ? "संदेश कॉपी करें" : "Copy message";
+      copy.style.marginTop = "10px";
+      copy.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(message); copy.textContent = language === "hi" ? "कॉपी हो गया" : "Copied"; }
+        catch(e) { window.prompt(language === "hi" ? "संदेश कॉपी करें:" : "Copy message:", message); }
+      });
+      result.appendChild(document.createElement("br"));
+      result.appendChild(copy);
+      return;
+    }
+    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
+  }
+  customerForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const d = new FormData(customerForm);
+    const message = "GharSetu Customer Enquiry / ग्राहक पूछताछ\nName: "+d.get("name")+"\nPhone: "+d.get("phone")+"\nCity: "+d.get("city")+"\nCategory: "+d.get("category")+"\nBudget: "+d.get("budget")+"\nTimeline: "+d.get("timeline")+"\nDetails: "+(d.get("details") || "-");
+    openWhatsApp(message);
+  });
+  supplierForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const d = new FormData(supplierForm);
+    const message = "GharSetu Supplier Registration / सप्लायर रजिस्ट्रेशन\nBusiness: "+d.get("business")+"\nPhone: "+d.get("phone")+"\nCity/service area: "+d.get("city")+"\nCategory: "+d.get("category")+"\nExperience/details: "+(d.get("details") || "-");
+    openWhatsApp(message);
+  });
+  document.getElementById("waLink").addEventListener("click", function(e) {
+    if (!/^91\d{10}$/.test(WHATSAPP_NUMBER)) {
+      e.preventDefault();
+      document.getElementById("request").scrollIntoView({behavior:"smooth"});
+      const result = document.getElementById("formResult");
+      result.style.display = "block";
+      result.textContent = language === "hi" ? "WhatsApp नंबर अभी सेट नहीं है। लाइव करने से पहले आधिकारिक नंबर जोड़ना होगा।" : "WhatsApp number is not configured yet. Add the official number before launch.";
+    } else {
+      e.preventDefault();
+      window.open("https://wa.me/" + WHATSAPP_NUMBER, "_blank", "noopener");
+    }
+  });
+})();
+</script>
+</body>
+</html>
